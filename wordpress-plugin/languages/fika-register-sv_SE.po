@@ -1,0 +1,268 @@
+# Swedish Translation for Traditional Swedish Fika Register Plugin
+# Copyright (C) 2024 Traditional Swedish Fika
+# This file is distributed under the MIT License.
+msgid ""
+msgstr ""
+"Project-Id-Version: Traditional Swedish Fika Register 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-01 12:00+0000\n"
+"PO-Revision-Date: 2024-01-01 12:00+0000\n"
+"Last-Translator: Traditional Swedish Fika <hello@swedishfika.com>\n"
+"Language-Team: Swedish\n"
+"Language: sv_SE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: fika-register.php:45
+msgid "Traditional Swedish Fika Register"
+msgstr "Traditionellt Svenskt Fika-register"
+
+#: fika-register.php:75
+msgid "Loading fika places..."
+msgstr "Laddar fika-ställen..."
+
+#: fika-register.php:76
+msgid "Error loading fika places"
+msgstr "Fel vid inläsning av fika-ställen"
+
+#: fika-register.php:88
+msgid "Fika Register Settings"
+msgstr "Fika-register Inställningar"
+
+#: fika-register.php:89
+msgid "Fika Register"
+msgstr "Fika-register"
+
+#: fika-register.php:101
+msgid "API Settings"
+msgstr "API-inställningar"
+
+#: fika-register.php:107
+msgid "API Base URL"
+msgstr "API Bas-URL"
+
+#: fika-register.php:114
+msgid "Cache Time (minutes)"
+msgstr "Cachningstid (minuter)"
+
+#: fika-register.php:121
+msgid "Default City"
+msgstr "Standardstad"
+
+#: fika-register.php:135
+msgid "Test API Connection"
+msgstr "Testa API-anslutning"
+
+#: fika-register.php:138
+msgid "Test Connection"
+msgstr "Testa anslutning"
+
+#: fika-register.php:143
+msgid "Testing..."
+msgstr "Testar..."
+
+#: fika-register.php:144
+msgid "Testing connection..."
+msgstr "Testar anslutning..."
+
+#: fika-register.php:149
+msgid "✅ Connection successful!"
+msgstr "✅ Anslutningen lyckades!"
+
+#: fika-register.php:154
+msgid "❌ Connection failed"
+msgstr "❌ Anslutningen misslyckades"
+
+#: fika-register.php:160
+msgid "Base URL of your Fika Register API"
+msgstr "Bas-URL för ditt Fika-register API"
+
+#: fika-register.php:166
+msgid "How long to cache API responses (1-1440 minutes)"
+msgstr "Hur länge API-svar ska cachas (1-1440 minuter)"
+
+#: fika-register.php:188
+msgid "Search Swedish fika places..."
+msgstr "Sök svenska fika-ställen..."
+
+#: fika-register.php:189
+msgid "Search"
+msgstr "Sök"
+
+#: fika-register.php:225
+msgid "Please provide a search query or city"
+msgstr "Ange en sökfråga eller stad"
+
+#: fika-register.php:232
+msgid "Failed to search places"
+msgstr "Kunde inte söka platser"
+
+#: templates/search-form.php:16
+msgid "All Cities"
+msgstr "Alla städer"
+
+#: templates/search-form.php:25
+msgid "Search for fika places"
+msgstr "Sök efter fika-ställen"
+
+#: templates/search-form.php:35
+msgid "Filter by city"
+msgstr "Filtrera efter stad"
+
+#: templates/search-form.php:48
+msgid "Search results"
+msgstr "Sökresultat"
+
+#: templates/city-places.php:35
+msgid "Fika Places in %s"
+msgstr "Fika-ställen i %s"
+
+#: templates/city-places.php:40
+msgid "%d place"
+msgid_plural "%d places"
+msgstr[0] "%d plats"
+msgstr[1] "%d platser"
+
+#: templates/city-places.php:59
+msgid "Loading fika places in %s..."
+msgstr "Laddar fika-ställen i %s..."
+
+#: templates/city-places.php:66
+msgid "No fika places found in %s yet."
+msgstr "Inga fika-ställen hittades i %s ännu."
+
+#: templates/city-places.php:72
+msgid "Could not load fika places in %s."
+msgstr "Kunde inte ladda fika-ställen i %s."
+
+#: templates/city-places.php:156
+msgid "View all %s fika places in %s →"
+msgstr "Visa alla %s fika-ställen i %s →"
+
+#: templates/city-places.php:165
+msgid "Traditional Swedish fika locations in %s"
+msgstr "Traditionella svenska fika-platser i %s"
+
+#: templates/featured-places.php:18
+msgid "Featured Fika Experiences"
+msgstr "Utvalda fika-upplevelser"
+
+#: templates/featured-places.php:31
+msgid "Loading featured fika places..."
+msgstr "Laddar utvalda fika-ställen..."
+
+#: templates/featured-places.php:38
+msgid "Featured places coming soon!"
+msgstr "Utvalda platser kommer snart!"
+
+#: templates/featured-places.php:44
+msgid "Could not load featured places."
+msgstr "Kunde inte ladda utvalda platser."
+
+#: templates/featured-places.php:121
+msgid "Discover our carefully selected traditional Swedish fika locations"
+msgstr "Upptäck våra noggrant utvalda traditionella svenska fika-platser"
+
+#: templates/featured-places.php:158
+msgid "Explore all featured fika experiences →"
+msgstr "Utforska alla utvalda fika-upplevelser →"
+
+#: templates/featured-places.php:185
+msgid "Featured Swedish Fika Places"
+msgstr "Utvalda svenska fika-ställen"
+
+#: templates/featured-places.php:186
+msgid "Carefully selected traditional Swedish fika locations"
+msgstr "Noggrant utvalda traditionella svenska fika-platser"
+
+#: includes/widgets.php:18
+msgid "Fika Search"
+msgstr "Fika-sökning"
+
+#: includes/widgets.php:20
+msgid "Display a search form for Swedish fika locations"
+msgstr "Visa ett sökformulär för svenska fika-platser"
+
+#: includes/widgets.php:27
+msgid "Search Fika Places"
+msgstr "Sök fika-ställen"
+
+#: includes/widgets.php:28
+msgid "Search fika places..."
+msgstr "Sök fika-ställen..."
+
+#: includes/widgets.php:48
+msgid "Title:"
+msgstr "Titel:"
+
+#: includes/widgets.php:59
+msgid "Placeholder Text:"
+msgstr "Platshållartext:"
+
+#: includes/widgets.php:75
+msgid "Show city filter"
+msgstr "Visa stadsfilter"
+
+#: includes/widgets.php:95
+msgid "Featured Fika Places"
+msgstr "Utvalda fika-ställen"
+
+#: includes/widgets.php:97
+msgid "Display featured Swedish fika locations"
+msgstr "Visa utvalda svenska fika-platser"
+
+#: includes/widgets.php:106
+msgid "Featured Fika"
+msgstr "Utvalda fika"
+
+#: includes/widgets.php:136
+msgid "View all →"
+msgstr "Visa alla →"
+
+#: includes/widgets.php:192
+msgid "City:"
+msgstr "Stad:"
+
+#: includes/widgets.php:209
+msgid "Number of places:"
+msgstr "Antal platser:"
+
+#: includes/widgets.php:225
+msgid "Show descriptions"
+msgstr "Visa beskrivningar"
+
+# Feature translations
+msgid "WiFi"
+msgstr "WiFi"
+
+msgid "Outdoor Seating"
+msgstr "Uteservering"
+
+msgid "Wheelchair Accessible"
+msgstr "Rullstolstillgänglig"
+
+msgid "Kanelbullar"
+msgstr "Kanelbullar"
+
+msgid "Prinsesstårta"
+msgstr "Prinsesstårta"
+
+msgid "Coffee"
+msgstr "Kaffe"
+
+msgid "Tea"
+msgstr "Te"
+
+msgid "Pastries"
+msgstr "Bakverk"
+
+msgid "Sandwiches"
+msgstr "Smörgåsar"
+
+msgid "Lunch"
+msgstr "Lunch"
+
+msgid "Breakfast"
+msgstr "Frukost"
