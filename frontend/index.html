@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traditional Swedish Fika - Discover Authentic Fika Locations</title>
+    <meta name="description" content="Discover the best traditional Swedish fika locations across Stockholm, Gothenburg, Malmö, Uppsala, and Västerås. Find authentic cafés serving kanelbullar, prinsesstårta, and more Swedish classics.">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="Swedish fika, traditional cafés, kanelbullar, cinnamon buns, Stockholm, Gothenburg, Malmö, Uppsala, Västerås, konditori, Swedish pastries">
+    <meta name="author" content="Traditional Swedish Fika">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://swedishfika.com/">
+    <meta property="og:title" content="Traditional Swedish Fika - Discover Authentic Fika Locations">
+    <meta property="og:description" content="Find the best traditional fika spots in Sweden's major cities. Authentic Swedish café culture awaits!">
+    <meta property="og:image" content="/static/images/fika-hero.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://swedishfika.com/">
+    <meta property="twitter:title" content="Traditional Swedish Fika">
+    <meta property="twitter:description" content="Discover authentic Swedish fika locations across major cities">
+    <meta property="twitter:image" content="/static/images/fika-hero.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/images/apple-touch-icon.png">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Traditional Swedish Fika",
+        "url": "https://swedishfika.com",
+        "description": "Directory of traditional Swedish fika locations across major cities",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://swedishfika.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav-brand">
+                <h1>Traditional Swedish Fika</h1>
+                <span class="nav-tagline">Upptäck äkta fika-upplevelser</span>
+            </div>
+            
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input 
+                    type="text" 
+                    id="search-input" 
+                    class="search-input" 
+                    placeholder="Sök fika-ställen..."
+                    aria-label="Search for fika locations"
+                >
+                <button class="search-btn" id="search-btn" aria-label="Search">
+                    🔍
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content container">
+            <h1 class="hero-title">Traditional Swedish Fika</h1>
+            <p class="hero-subtitle">
+                Discover authentic fika experiences across Sweden's major cities. 
+                From historic konditoris to modern cafés, find your perfect Swedish coffee break.
+            </p>
+            
+            <!-- Quick City Links -->
+            <div class="city-grid">
+                <a href="/stockholm" class="city-card" data-city="stockholm">
+                    <div class="city-icon">🏛️</div>
+                    <h3>Stockholm</h3>
+                    <p>Capital's finest fika</p>
+                    <span class="city-count" data-count="stockholm">50+ places</span>
+                </a>
+                
+                <a href="/gothenburg" class="city-card" data-city="gothenburg">
+                    <div class="city-icon">🏗️</div>
+                    <h3>Gothenburg</h3>
+                    <p>Giant cinnamon buns</p>
+                    <span class="city-count" data-count="gothenburg">35+ places</span>
+                </a>
+                
+                <a href="/malmo" class="city-card" data-city="malmo">
+                    <div class="city-icon">🌉</div>
+                    <h3>Malmö</h3>
+                    <p>International fika</p>
+                    <span class="city-count" data-count="malmo">25+ places</span>
+                </a>
+                
+                <a href="/uppsala" class="city-card" data-city="uppsala">
+                    <div class="city-icon">🎓</div>
+                    <h3>Uppsala</h3>
+                    <p>University town charm</p>
+                    <span class="city-count" data-count="uppsala">20+ places</span>
+                </a>
+                
+                <a href="/vasteras" class="city-card" data-city="vasteras">
+                    <div class="city-icon">⚡</div>
+                    <h3>Västerås</h3>
+                    <p>Industrial heritage</p>
+                    <span class="city-count" data-count="vasteras">15+ places</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Section -->
+    <section class="featured">
+        <div class="container">
+            <h2>Featured Fika Experiences</h2>
+            <div class="featured-grid" id="featured-places">
+                <!-- Dynamic content loaded here -->
+                <div class="loading">Loading featured places...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Fika Section -->
+    <section class="about-fika">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>What is Fika?</h2>
+                    <p>
+                        Fika is more than just a coffee break – it's a Swedish cultural institution 
+                        that celebrates slowing down, connecting with others, and savoring life's 
+                        simple pleasures.
+                    </p>
+                    <p>
+                        Traditional fika includes coffee paired with pastries like kanelbullar 
+                        (cinnamon buns), prinsesstårta (princess cake), or mazarin tarts. 
+                        It's a moment to pause, reflect, and enjoy quality time.
+                    </p>
+                    
+                    <div class="fika-traditions">
+                        <div class="tradition-item">
+                            <span class="tradition-icon">☕</span>
+                            <div>
+                                <h4>Strong Coffee</h4>
+                                <p>Swedes are the world's second-largest coffee consumers</p>
+                            </div>
+                        </div>
+                        
+                        <div class="tradition-item">
+                            <span class="tradition-icon">🥐</span>
+                            <div>
+                                <h4>Traditional Pastries</h4>
+                                <p>Kanelbullar, prinsesstårta, and other Swedish classics</p>
+                            </div>
+                        </div>
+                        
+                        <div class="tradition-item">
+                            <span class="tradition-icon">🤝</span>
+                            <div>
+                                <h4>Social Connection</h4>
+                                <p>Quality time with friends, family, or colleagues</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-image">
+                    <img src="/static/images/fika-culture.jpg" alt="Traditional Swedish fika setting" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Results Section (Hidden by default) -->
+    <section class="search-results" id="search-results" style="display: none;">
+        <div class="container">
+            <h2 id="search-results-title">Search Results</h2>
+            <div class="results-grid" id="results-container">
+                <!-- Dynamic search results -->
+            </div>
+            
+            <!-- Pagination -->
+            <div class="pagination" id="pagination" style="display: none;">
+                <!-- Dynamic pagination buttons -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Traditional Swedish Fika</h3>
+                    <p>Discovering authentic fika experiences across Sweden</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Cities</h4>
+                    <ul>
+                        <li><a href="/stockholm">Stockholm</a></li>
+                        <li><a href="/gothenburg">Gothenburg</a></li>
+                        <li><a href="/malmo">Malmö</a></li>
+                        <li><a href="/uppsala">Uppsala</a></li>
+                        <li><a href="/vasteras">Västerås</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="/about">About Fika Culture</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                        <li><a href="/submit">Submit a Place</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Traditional Swedish Fika. Made with ❤️ for fika lovers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/search.js"></script>
+</body>
+</html>
