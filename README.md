@@ -1,59 +1,66 @@
-# Traditional Swedish Fika Register
+# Traditional Swedish Fika Register 🇸🇪
 
-A comprehensive web application for discovering traditional Swedish fika locations across Sweden's major cities.
+A comprehensive web application for discovering authentic Swedish fika experiences across major cities. Built with modern web technologies and Swedish cultural authenticity in mind.
 
 ## Features
 
-- **Public Frontend**: SEO-friendly pages for each major Swedish city (Stockholm, Gothenburg, Malmö, Uppsala, Västerås)
-- **AI-Powered Backend**: Private dashboard with AI recommendations and content management
-- **Comprehensive Database**: Curated fika locations with reviews, ratings, and traditional specialties
-- **Smart Caching**: Redis-powered caching for optimal performance
-- **AI Integration**: LangChain agents with OpenRouter LLM for personalized recommendations
+- **🏙️ City-based Discovery**: Explore fika spots in Stockholm, Gothenberg, Malmö, Uppsala, and Västerås
+- **🔍 Smart Search**: AI-powered search with Swedish language support
+- **🤖 AI Recommendations**: LangChain-powered personalized suggestions
+- **📱 Responsive Design**: Mobile-first, SEO-optimized frontend
+- **⚡ High Performance**: Redis caching and optimized database queries
+- **🐳 Docker Ready**: Complete development environment with Docker Compose
 
-## Tech Stack
+## Technology Stack
 
-- **Backend**: Python FastAPI
-- **Frontend**: HTML/CSS/JavaScript (Vanilla)
-- **Database**: Supabase (Production) / SQLite (Development)
-- **Caching**: Redis via Upstash
-- **AI**: LangChain + OpenRouter
-- **Deployment**: Docker + Digital Ocean
+### Backend
+- **FastAPI**: Modern Python web framework with async support
+- **SQLAlchemy**: Database ORM with PostgreSQL
+- **LangChain**: AI agent framework for recommendations
+- **Redis**: Caching and session management
+- **Prometheus**: Metrics and monitoring
+
+### Frontend
+- **HTML/CSS/JavaScript**: SEO-friendly progressive enhancement
+- **Swedish Design System**: Inspired by Swedish design principles
+- **Responsive Grid**: Modern CSS Grid and Flexbox layouts
+
+### Infrastructure
+- **Docker**: Containerized development and deployment
+- **PostgreSQL**: Primary database with JSON support
+- **Redis**: High-performance caching layer
+- **Digital Ocean**: Production hosting platform
 
 ## Quick Start
 
-### Development Setup
+### Development Environment (Docker)
 
-1. Clone the repository:
-```bash
-git clone https://github.com/your-username/swedish-fika-register.git
-cd swedish-fika-register
-```
+1. **Clone and setup**:
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/traditional-swedish-fika.git
+   cd traditional-swedish-fika
+   cp .env.example .env
+   ```
 
-2. Set up environment variables:
-```bash
-cp .env.example .env
-# Edit .env with your configuration
-```
+2. **Configure environment**:
+   Edit `.env` with your API keys:
+   ```
+   SUPABASE_URL=your_supabase_url
+   SUPABASE_ANON_KEY=your_supabase_anon_key
+   OPENROUTER_API_KEY=your_openrouter_key
+   UPSTASH_REDIS_URL=your_redis_url
+   ```
 
-3. Start the development environment:
-```bash
-docker-compose up -d
-```
+3. **Start with Docker**:
+   ```bash
+   ./setup.sh
+   ```
 
-4. Run database migrations:
-```bash
-docker-compose exec backend alembic upgrade head
-```
-
-5. Load initial data:
-```bash
-docker-compose exec backend python scripts/load_initial_data.py
-```
-
-The application will be available at:
-- Frontend: http://localhost:3000
-- Backend API: http://localhost:8000
-- AI Dashboard: http://localhost:8000/ai/dashboard
+4. **Access the application**:
+   - Frontend: http://localhost:3000
+   - Backend API: http://localhost:8000
+   - AI Dashboard: http://localhost:8000/ai/dashboard
+   - API Docs: http://localhost:8000/docs
 
 ## Project Structure
 
