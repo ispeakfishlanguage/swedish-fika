@@ -486,33 +486,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Filter Navigation System
 function initializeFilterNavigation(app) {
-    // Initialize dropdown toggles
-    document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
-        toggle.addEventListener('click', (e) => {
-            e.preventDefault();
-            console.log('Dropdown toggle clicked:', toggle.dataset.dropdown);
-            const dropdownName = toggle.dataset.dropdown;
-            const dropdown = document.getElementById(dropdownName + '-dropdown');
-            
-            if (!dropdown) {
-                console.error('Dropdown not found:', dropdownName + '-dropdown');
-                return;
-            }
-            
-            // Close other dropdowns
-            document.querySelectorAll('.dropdown-menu').forEach(menu => {
-                if (menu !== dropdown) {
-                    menu.classList.remove('show');
-                    menu.previousElementSibling?.classList.remove('active');
-                }
-            });
-            
-            // Toggle current dropdown
-            dropdown.classList.toggle('show');
-            toggle.classList.toggle('active');
-            console.log('Dropdown toggled, now showing:', dropdown.classList.contains('show'));
-        });
-    });
+    // Bootstrap dropdowns are handled automatically, we just need to handle the filter clicks
     
     // About button handler
     const aboutBtn = document.getElementById('about-fika-btn');
@@ -525,18 +499,6 @@ function initializeFilterNavigation(app) {
             }
         });
     }
-    
-    // Close dropdowns when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.filter-dropdown')) {
-            document.querySelectorAll('.dropdown-menu').forEach(menu => {
-                menu.classList.remove('show');
-            });
-            document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
-                toggle.classList.remove('active');
-            });
-        }
-    });
     
     // City filters
     document.querySelectorAll('.city-filter').forEach(btn => {
