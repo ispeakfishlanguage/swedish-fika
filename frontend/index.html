@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>Traditional Swedish Fika - Discover Authentic Fika Locations</title>
     <meta name="description" content="Discover the best traditional Swedish fika locations across Stockholm, Gothenburg, Malmö, Uppsala, and Västerås. Find authentic cafés serving kanelbullar, prinsesstårta, and more Swedish classics.">
     
@@ -29,11 +32,14 @@
     <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/static/images/apple-touch-icon.png">
     
-    <!-- Stylesheets -->
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Custom Stylesheets -->
     <link rel="stylesheet" href="/static/css/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Schema.org structured data -->
     <script type="application/ld+json">
@@ -54,73 +60,150 @@
 <body>
     <!-- Header -->
     <header class="header">
-        <nav class="nav container">
-            <div class="nav-brand">
-                <h1>Traditional Swedish Fika</h1>
-                <span class="nav-tagline">Upptäck äkta fika-upplevelser</span>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <div class="navbar-brand">
+                    <h1><a href="/" class="brand-link text-decoration-none">Traditional Swedish Fika</a></h1>
+                    <span class="nav-tagline">Upptäck äkta fika-upplevelser</span>
+                </div>
+                
+                <!-- Search Bar -->
+                <div class="d-flex">
+                    <div class="input-group">
+                        <input 
+                            type="text" 
+                            id="search-input" 
+                            class="form-control" 
+                            placeholder="Sök fika-ställen..."
+                            aria-label="Search for fika locations"
+                        >
+                        <button class="btn btn-outline-secondary" id="search-btn" type="button" aria-label="Search">
+                            🔍
+                        </button>
+                    </div>
+                </div>
             </div>
-            
-            <!-- Search Bar -->
-            <div class="search-container">
-                <input 
-                    type="text" 
-                    id="search-input" 
-                    class="search-input" 
-                    placeholder="Sök fika-ställen..."
-                    aria-label="Search for fika locations"
-                >
-                <button class="search-btn" id="search-btn" aria-label="Search">
-                    🔍
-                </button>
+        </nav>
+        
+        <!-- Filter Navigation -->
+        <nav class="filter-nav">
+            <div class="container">
+                <div class="d-flex flex-wrap gap-3 align-items-center">
+                    <!-- City Dropdown -->
+                    <div class="dropdown">
+                        <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            All Cities
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><button class="dropdown-item city-filter active" data-city="all">All Cities</button></li>
+                            <li><button class="dropdown-item city-filter" data-city="stockholm">Stockholm</button></li>
+                            <li><button class="dropdown-item city-filter" data-city="gothenburg">Gothenburg</button></li>
+                            <li><button class="dropdown-item city-filter" data-city="malmo">Malmö</button></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Seating Dropdown -->
+                    <div class="dropdown">
+                        <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Seating
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><button class="dropdown-item feature-filter" data-feature="indoor_seating">Indoor</button></li>
+                            <li><button class="dropdown-item feature-filter" data-feature="outdoor_seating">Outdoor</button></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Specialties Dropdown -->
+                    <div class="dropdown">
+                        <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Specialties
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><button class="dropdown-item specialty-filter" data-specialty="kanelbullar">Kanelbullar</button></li>
+                            <li><button class="dropdown-item specialty-filter" data-specialty="prinsesstarta">Prinsesstårta</button></li>
+                            <li><button class="dropdown-item specialty-filter" data-specialty="coffee">Own Coffee Brand</button></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- About Button -->
+                    <button class="btn btn-outline-light" id="about-fika-btn">About Swedish Fika</button>
+                </div>
             </div>
         </nav>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
+        <div class="hero-background">
+            <img src="https://cardamommagazine.com/wp-content/uploads/2023/06/swedish-cinnamon-rolls-kannelbullar-1024x683.jpg" alt="Traditional Swedish cinnamon rolls kannelbullar" class="hero-img">
+        </div>
         <div class="hero-content container">
             <h1 class="hero-title">Traditional Swedish Fika</h1>
             <p class="hero-subtitle">
                 Discover authentic fika experiences across Sweden's major cities. 
                 From historic konditoris to modern cafés, find your perfect Swedish coffee break.
             </p>
-            
-            <!-- Quick City Links -->
-            <div class="city-grid">
-                <a href="/stockholm" class="city-card" data-city="stockholm">
-                    <div class="city-icon">🏛️</div>
-                    <h3>Stockholm</h3>
-                    <p>Capital's finest fika</p>
-                    <span class="city-count" data-count="stockholm">50+ places</span>
-                </a>
+        </div>
+    </section>
+
+    <!-- City Links Section -->
+    <section class="city-section py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg col-md-4 col-sm-6">
+                    <a href="/stockholm" class="city-card text-decoration-none" data-city="stockholm">
+                        <img src="https://assets.tours-tickets.com/eyJidWNrZXQiOiJhc3NldHMudjMudG91cnMtdGlja2V0cy5jb20iLCJrZXkiOiJzdG9ja2hvbG0taW4tc3VtbWVyX2RwMmpleGx1LmpwZyIsImVkaXRzIjp7ImpwZWciOnsicXVhbGl0eSI6NTAsInByb2dyZXNzaXZlIjp0cnVlLCJ0cmVsbGlzUXVhbnRpc2F0aW9uIjp0cnVlLCJvdmVyc2hvb3REZXJpbmdpbmciOnRydWUsIm9wdGltaXplU2NhbnMiOnRydWV9LCJyZXNpemUiOnsid2lkdGgiOjEwMDAsImhlaWdodCI6NzUwLCJmaXQiOiJjb3ZlciJ9LCJzaGFycGVuIjp0cnVlfX0=" alt="Stockholm cityscape" class="city-image">
+                        <div class="city-content">
+                            <h3>Stockholm</h3>
+                            <p>Capital's finest fika</p>
+                            <span class="city-count badge">50+ places</span>
+                        </div>
+                    </a>
+                </div>
                 
-                <a href="/gothenburg" class="city-card" data-city="gothenburg">
-                    <div class="city-icon">🏗️</div>
-                    <h3>Gothenburg</h3>
-                    <p>Giant cinnamon buns</p>
-                    <span class="city-count" data-count="gothenburg">35+ places</span>
-                </a>
+                <div class="col-lg col-md-4 col-sm-6">
+                    <a href="/gothenburg" class="city-card text-decoration-none" data-city="gothenburg">
+                        <img src="https://content.r9cdn.net/rimg/dimg/b0/d4/3198870f-city-56272-177715fb999.jpg?width=1366&height=768&xhint=2417&yhint=1204&crop=true" alt="Gothenburg cityscape" class="city-image">
+                        <div class="city-content">
+                            <h3>Gothenburg</h3>
+                            <p>Giant cinnamon buns</p>
+                            <span class="city-count badge">35+ places</span>
+                        </div>
+                    </a>
+                </div>
                 
-                <a href="/malmo" class="city-card" data-city="malmo">
-                    <div class="city-icon">🌉</div>
-                    <h3>Malmö</h3>
-                    <p>International fika</p>
-                    <span class="city-count" data-count="malmo">25+ places</span>
-                </a>
+                <div class="col-lg col-md-4 col-sm-6">
+                    <a href="/malmo" class="city-card text-decoration-none" data-city="malmo">
+                        <img src="https://www.solita.fi/wp-content/uploads/2023/05/Malmo-office-news.jpg" alt="Malmö cityscape" class="city-image">
+                        <div class="city-content">
+                            <h3>Malmö</h3>
+                            <p>International fika</p>
+                            <span class="city-count badge">25+ places</span>
+                        </div>
+                    </a>
+                </div>
                 
-                <a href="/uppsala" class="city-card" data-city="uppsala">
-                    <div class="city-icon">🎓</div>
-                    <h3>Uppsala</h3>
-                    <p>University town charm</p>
-                    <span class="city-count" data-count="uppsala">20+ places</span>
-                </a>
+                <div class="col-lg col-md-4 col-sm-6">
+                    <a href="/uppsala" class="city-card text-decoration-none" data-city="uppsala">
+                        <img src="https://content.r9cdn.net/rimg/dimg/b0/d4/3198870f-city-56272-177715fb999.jpg?width=1366&height=768&xhint=2417&yhint=1204&crop=true" alt="Uppsala cityscape" class="city-image">
+                        <div class="city-content">
+                            <h3>Uppsala</h3>
+                            <p>University town charm</p>
+                            <span class="city-count badge">20+ places</span>
+                        </div>
+                    </a>
+                </div>
                 
-                <a href="/vasteras" class="city-card" data-city="vasteras">
-                    <div class="city-icon">⚡</div>
-                    <h3>Västerås</h3>
-                    <p>Industrial heritage</p>
-                    <span class="city-count" data-count="vasteras">15+ places</span>
-                </a>
+                <div class="col-lg col-md-4 col-sm-6">
+                    <a href="/vasteras" class="city-card text-decoration-none" data-city="vasteras">
+                        <img src="https://visitvasteras.se/app/uploads/2022/08/Vasteras_Cityvy_Foto-AvigPhoto.jpg" alt="Västerås cityscape" class="city-image">
+                        <div class="city-content">
+                            <h3>Västerås</h3>
+                            <p>Industrial heritage</p>
+                            <span class="city-count badge">15+ places</span>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -137,7 +220,7 @@
     </section>
 
     <!-- About Fika Section -->
-    <section class="about-fika">
+    <section class="about-fika" id="about-fika">
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
@@ -155,7 +238,6 @@
                     
                     <div class="fika-traditions">
                         <div class="tradition-item">
-                            <span class="tradition-icon">☕</span>
                             <div>
                                 <h4>Strong Coffee</h4>
                                 <p>Swedes are the world's second-largest coffee consumers</p>
@@ -163,7 +245,6 @@
                         </div>
                         
                         <div class="tradition-item">
-                            <span class="tradition-icon">🥐</span>
                             <div>
                                 <h4>Traditional Pastries</h4>
                                 <p>Kanelbullar, prinsesstårta, and other Swedish classics</p>
@@ -171,7 +252,6 @@
                         </div>
                         
                         <div class="tradition-item">
-                            <span class="tradition-icon">🤝</span>
                             <div>
                                 <h4>Social Connection</h4>
                                 <p>Quality time with friends, family, or colleagues</p>
@@ -181,7 +261,7 @@
                 </div>
                 
                 <div class="about-image">
-                    <img src="/static/images/fika-culture.jpg" alt="Traditional Swedish fika setting" loading="lazy">
+                    <img src="https://coolmomeats.com/wp-content/uploads/sites/5/2018/06/fika-at-ikea-featured.jpg" alt="Traditional Swedish fika spread with pastries and coffee" loading="lazy">
                 </div>
             </div>
         </div>
@@ -225,7 +305,7 @@
                 <div class="footer-section">
                     <h4>About</h4>
                     <ul>
-                        <li><a href="/about">About Fika Culture</a></li>
+                        <li><a href="/about.html">About Fika Culture</a></li>
                         <li><a href="/contact">Contact</a></li>
                         <li><a href="/submit">Submit a Place</a></li>
                     </ul>
@@ -238,6 +318,9 @@
         </div>
     </footer>
 
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
     <!-- Scripts -->
     <script src="/static/js/main.js"></script>
     <script src="/static/js/search.js"></script>

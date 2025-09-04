@@ -81,22 +81,82 @@ class FikaApp {
         this.currentQuery = query;
         this.currentPage = 1;
 
-        try {
-            const response = await fetch(`${this.apiBaseUrl}/places/search?query=${encodeURIComponent(query)}&page=${this.currentPage}&per_page=20`);
-            
-            if (!response.ok) {
-                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        // Demo search data with Unsplash images
+        const allDemoPlaces = [
+            {
+                id: 1,
+                name: "Café Saturnus",
+                address: "Eriksbergsgatan 6, Östermalm",
+                city: "Stockholm",
+                description: "Famous for their giant cinnamon buns and traditional Swedish atmosphere.",
+                rating: 4.7,
+                features: ["kanelbullar", "wifi", "outdoor_seating"],
+                images: ["https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=400&h=300&fit=crop"]
+            },
+            {
+                id: 2,
+                name: "Vete-Katten",
+                address: "Kungsgatan 55, Norrmalm",
+                city: "Stockholm",
+                description: "Historic konditori serving traditional Swedish pastries since 1928.",
+                rating: 4.5,
+                features: ["prinsesstarta", "traditional", "historic"],
+                images: ["https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop"]
+            },
+            {
+                id: 3,
+                name: "Konditori Hollandia",
+                address: "Kungsportsavenyen 36",
+                city: "Gothenburg",
+                description: "Historic bakery serving traditional Swedish pastries since 1920.",
+                rating: 4.8,
+                features: ["traditional", "historic", "kanelbullar"],
+                images: ["https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop"]
+            },
+            {
+                id: 4,
+                name: "Café Husaren",
+                address: "Haga Nygata 28, Haga",
+                city: "Gothenberg",
+                description: "Famous for their enormous cinnamon buns - the largest in Sweden!",
+                rating: 4.7,
+                features: ["giant_kanelbullar", "famous", "tourist_favorite"],
+                images: ["https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&h=300&fit=crop"]
+            },
+            {
+                id: 5,
+                name: "Lilla Kafferosteriet",
+                address: "Södermannagatan 21, Södermalm",
+                city: "Stockholm",
+                description: "Small specialty coffee roaster with cozy atmosphere.",
+                rating: 4.6,
+                features: ["specialty_coffee", "fresh_pastries", "cozy"],
+                images: ["https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=400&h=300&fit=crop"]
             }
-            
-            const data = await response.json();
-            this.displaySearchResults(data, query);
-            
-        } catch (error) {
-            console.error('Search failed:', error);
-            this.showError(`Search failed: ${error.message}`);
-        } finally {
+        ];
+
+        // Filter demo places based on search query
+        const filteredPlaces = allDemoPlaces.filter(place => {
+            const searchText = query.toLowerCase();
+            return (
+                place.name.toLowerCase().includes(searchText) ||
+                place.city.toLowerCase().includes(searchText) ||
+                place.description.toLowerCase().includes(searchText) ||
+                place.features.some(feature => feature.toLowerCase().includes(searchText))
+            );
+        });
+
+        const demoData = {
+            places: filteredPlaces,
+            total: filteredPlaces.length,
+            page: 1,
+            pages: 1
+        };
+
+        setTimeout(() => {
+            this.displaySearchResults(demoData, `Search results for "${query}"`);
             this.showLoading(false);
-        }
+        }, 300);
     }
 
     async searchByCity(cityKey) {
@@ -114,22 +174,27 @@ class FikaApp {
         this.currentCity = cityName;
         this.currentPage = 1;
 
-        try {
-            const response = await fetch(`${this.apiBaseUrl}/places?city=${encodeURIComponent(cityName)}&page=${this.currentPage}&per_page=20`);
-            
-            if (!response.ok) {
-                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-            }
-            
-            const data = await response.json();
-            this.displaySearchResults(data, `Places in ${cityName}`);
-            
-        } catch (error) {
-            console.error('City search failed:', error);
-            this.showError(`Failed to load places in ${cityName}: ${error.message}`);
-        } finally {
+        // Get all demo places and filter by city
+        const allPlaces = getAllDemoPlaces();
+        const cityDemoData = {
+            'Stockholm': allPlaces.filter(place => place.city === 'Stockholm'),
+            'Gothenburg': allPlaces.filter(place => place.city === 'Gothenburg'),
+            'Malmö': allPlaces.filter(place => place.city === 'Malmö'),
+            'Uppsala': allPlaces.filter(place => place.city === 'Uppsala'),
+            'Västerås': allPlaces.filter(place => place.city === 'Västerås')
+        };
+
+        const demoData = {
+            places: cityDemoData[cityName] || [],
+            total: cityDemoData[cityName]?.length || 0,
+            page: 1,
+            pages: 1
+        };
+
+        setTimeout(() => {
+            this.displaySearchResults(demoData, `Places in ${cityName}`);
             this.showLoading(false);
-        }
+        }, 500);
     }
 
     displaySearchResults(data, title) {
@@ -267,37 +332,43 @@ class FikaApp {
         
         if (!featuredContainer) return;
 
-        try {
-            const response = await fetch(`${this.apiBaseUrl}/places?verified_only=true&per_page=6`);
-            
-            if (!response.ok) {
-                throw new Error(`HTTP ${response.status}`);
+        // Demo data with Unsplash images
+        const demoPlaces = [
+            {
+                id: 1,
+                name: "Café Saturnus",
+                city: "Stockholm",
+                description: "Famous for their giant cinnamon buns and traditional Swedish atmosphere in Östermalm.",
+                rating: 4.7,
+                features: ["kanelbullar", "wifi", "outdoor_seating"],
+                images: ["https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=400&h=300&fit=crop&auto=format"]
+            },
+            {
+                id: 2,
+                name: "Konditori Hollandia",
+                city: "Gothenburg",
+                description: "Historic bakery serving traditional Swedish pastries since 1920 in the heart of Gothenburg.",
+                rating: 4.8,
+                features: ["prinsesstarta", "traditional", "historic"],
+                images: ["https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop&auto=format"]
+            },
+            {
+                id: 3,
+                name: "Lilla Kafferosteriet",
+                city: "Stockholm",
+                description: "Small specialty coffee roaster with cozy atmosphere and freshly baked Swedish pastries.",
+                rating: 4.6,
+                features: ["specialty_coffee", "fresh_pastries", "cozy"],
+                images: ["https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=400&h=300&fit=crop&auto=format"]
             }
-            
-            const data = await response.json();
-            
-            if (data.places && data.places.length > 0) {
-                featuredContainer.innerHTML = '';
-                
-                data.places.slice(0, 3).forEach(place => {
-                    const card = this.createFeaturedCard(place);
-                    featuredContainer.appendChild(card);
-                });
-            } else {
-                featuredContainer.innerHTML = `
-                    <div class="loading">
-                        Featured places will appear here once our database is populated with authentic Swedish fika locations.
-                    </div>
-                `;
-            }
-        } catch (error) {
-            console.error('Failed to load featured places:', error);
-            featuredContainer.innerHTML = `
-                <div class="loading">
-                    Featured places coming soon! We're currently building our database of authentic Swedish fika locations.
-                </div>
-            `;
-        }
+        ];
+
+        featuredContainer.innerHTML = '';
+        
+        demoPlaces.forEach(place => {
+            const card = this.createFeaturedCard(place);
+            featuredContainer.appendChild(card);
+        });
     }
 
     createFeaturedCard(place) {
@@ -403,8 +474,607 @@ class FikaApp {
 
 // Initialize the app when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    new FikaApp();
+    const app = new FikaApp();
+    window.fikaApp = app; // Make globally accessible
+    
+    // Initialize filter navigation
+    initializeFilterNavigation(app);
+    
+    // Initialize brand link
+    initializeBrandLink(app);
 });
+
+// Filter Navigation System
+function initializeFilterNavigation(app) {
+    // Initialize dropdown toggles
+    document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+        toggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log('Dropdown toggle clicked:', toggle.dataset.dropdown);
+            const dropdownName = toggle.dataset.dropdown;
+            const dropdown = document.getElementById(dropdownName + '-dropdown');
+            
+            if (!dropdown) {
+                console.error('Dropdown not found:', dropdownName + '-dropdown');
+                return;
+            }
+            
+            // Close other dropdowns
+            document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                if (menu !== dropdown) {
+                    menu.classList.remove('show');
+                    menu.previousElementSibling?.classList.remove('active');
+                }
+            });
+            
+            // Toggle current dropdown
+            dropdown.classList.toggle('show');
+            toggle.classList.toggle('active');
+            console.log('Dropdown toggled, now showing:', dropdown.classList.contains('show'));
+        });
+    });
+    
+    // About button handler
+    const aboutBtn = document.getElementById('about-fika-btn');
+    if (aboutBtn) {
+        aboutBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const aboutSection = document.getElementById('about-fika');
+            if (aboutSection) {
+                aboutSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+    
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.filter-dropdown')) {
+            document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                menu.classList.remove('show');
+            });
+            document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+                toggle.classList.remove('active');
+            });
+        }
+    });
+    
+    // City filters
+    document.querySelectorAll('.city-filter').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log('City filter clicked:', e.target.dataset.city);
+            handleFilterClick(e, 'city-filter');
+            const city = e.target.dataset.city;
+            
+            // Update dropdown toggle text
+            const citiesToggle = document.querySelector('[data-dropdown="cities"] span:first-child');
+            if (citiesToggle) {
+                citiesToggle.textContent = city === 'all' ? 'All Cities' : e.target.textContent;
+            }
+            
+            // Close dropdown
+            document.getElementById('cities-dropdown').classList.remove('show');
+            document.querySelector('[data-dropdown="cities"]').classList.remove('active');
+            
+            if (city === 'all') {
+                app.loadFeaturedPlaces();
+                showAllSections();
+            } else {
+                app.searchByCity(city);
+            }
+        });
+    });
+    
+    // Feature filters (seating)
+    document.querySelectorAll('.feature-filter').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            handleFilterClick(e, 'feature-filter');
+            const feature = e.target.dataset.feature;
+            
+            // Update dropdown toggle text
+            const seatingToggle = document.querySelector('[data-dropdown="seating"] span:first-child');
+            if (seatingToggle) {
+                seatingToggle.textContent = e.target.textContent;
+            }
+            
+            // Close dropdown
+            document.getElementById('seating-dropdown').classList.remove('show');
+            document.querySelector('[data-dropdown="seating"]').classList.remove('active');
+            
+            filterByFeature(feature, app);
+        });
+    });
+    
+    // Specialty filters
+    document.querySelectorAll('.specialty-filter').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            handleFilterClick(e, 'specialty-filter');
+            const specialty = e.target.dataset.specialty;
+            
+            // Update dropdown toggle text
+            const specialtiesToggle = document.querySelector('[data-dropdown="specialties"] span:first-child');
+            if (specialtiesToggle) {
+                specialtiesToggle.textContent = e.target.textContent;
+            }
+            
+            // Close dropdown
+            document.getElementById('specialties-dropdown').classList.remove('show');
+            document.querySelector('[data-dropdown="specialties"]').classList.remove('active');
+            
+            filterBySpecialty(specialty, app);
+        });
+    });
+}
+
+function handleFilterClick(event, filterClass) {
+    // Remove active class from all buttons in this filter group
+    document.querySelectorAll(`.${filterClass}`).forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // Add active class to clicked button
+    event.target.classList.add('active');
+}
+
+function filterByFeature(feature, app) {
+    const allPlaces = getAllDemoPlaces();
+    
+    let filteredPlaces;
+    if (feature === 'all') {
+        app.loadFeaturedPlaces();
+        showAllSections();
+        return;
+    } else {
+        filteredPlaces = allPlaces.filter(place => {
+            const features = place.features || [];
+            return features.includes(feature);
+        });
+    }
+    
+    const featureNames = {
+        'outdoor_seating': 'Outdoor Seating',
+        'indoor_seating': 'Indoor Seating'
+    };
+    
+    displayFilteredResults(filteredPlaces, `Places with ${featureNames[feature] || feature}`);
+}
+
+function filterBySpecialty(specialty, app) {
+    const allPlaces = getAllDemoPlaces();
+    
+    const filteredPlaces = allPlaces.filter(place => {
+        const features = place.features || [];
+        return features.includes(specialty);
+    });
+    
+    const specialtyNames = {
+        'kanelbullar': 'Kanelbullar (Cinnamon Buns)',
+        'prinsesstarta': 'Prinsesstårta (Princess Cake)', 
+        'wifi': 'WiFi Available'
+    };
+    
+    displayFilteredResults(filteredPlaces, `Places with ${specialtyNames[specialty] || specialty}`);
+}
+
+function getAllDemoPlaces() {
+    // This mirrors the demo data from the app's searchByCity method
+    const stockholmPlaces = [
+        {
+            id: 1,
+            name: "Café Saturnus",
+            city: "Stockholm",
+            address: "Eriksbergsgatan 6, Östermalm",
+            description: "Famous for their giant cinnamon buns and traditional Swedish atmosphere in Östermalm.",
+            rating: 4.7,
+            features: ["kanelbullar", "wifi", "outdoor_seating"]
+        },
+        {
+            id: 2,
+            name: "Vete-Katten",
+            city: "Stockholm", 
+            address: "Kungsgatan 55, Norrmalm",
+            description: "Historic konditori since 1928, serving traditional Swedish pastries and coffee.",
+            rating: 4.5,
+            features: ["prinsesstarta", "kanelbullar", "indoor_seating"]
+        },
+        {
+            id: 3,
+            name: "Rosendals Trädgård",
+            city: "Stockholm",
+            address: "Rosendalsterrassen 38, Djurgården", 
+            description: "Garden café with organic pastries and beautiful greenhouse setting.",
+            rating: 4.6,
+            features: ["outdoor_seating", "wifi"]
+        },
+        {
+            id: 4,
+            name: "Chokladkoppen",
+            city: "Stockholm",
+            address: "Stortorget 18, Gamla Stan",
+            description: "Charming café in the heart of Old Town, perfect for traditional fika with hot chocolate.",
+            rating: 4.3,
+            features: ["indoor_seating", "coffee", "kanelbullar"]
+        },
+        {
+            id: 5,
+            name: "Café Pascal",
+            city: "Stockholm",
+            address: "Norrtullsgatan 4, Vasastan",
+            description: "French-inspired café with excellent coffee and homemade pastries in trendy Vasastan.",
+            rating: 4.4,
+            features: ["coffee", "wifi", "indoor_seating"]
+        },
+        {
+            id: 6,
+            name: "Fabrique Bakery",
+            city: "Stockholm",
+            address: "Kungsgatan 25, Norrmalm",
+            description: "Artisan bakery known for fresh bread and authentic Swedish cardamom buns.",
+            rating: 4.2,
+            features: ["kanelbullar", "indoor_seating"]
+        },
+        {
+            id: 7,
+            name: "Grillska Huset",
+            city: "Stockholm",
+            address: "Stortorget 3, Gamla Stan",
+            description: "Traditional Swedish café in a historic building with classic fika atmosphere.",
+            rating: 4.1,
+            features: ["prinsesstarta", "indoor_seating", "kanelbullar"]
+        },
+        {
+            id: 8,
+            name: "Café Rival",
+            city: "Stockholm",
+            address: "Mariatorget 3, Södermalm",
+            description: "Stylish café in trendy Södermalm with great coffee and modern Swedish pastries.",
+            rating: 4.5,
+            features: ["coffee", "wifi", "outdoor_seating"]
+        },
+        {
+            id: 9,
+            name: "Konditori Hollandia",
+            city: "Stockholm",
+            address: "Upplandsgatan 28, Vasastan",
+            description: "Family-run konditori serving traditional Swedish cakes and pastries since 1952.",
+            rating: 4.6,
+            features: ["prinsesstarta", "kanelbullar", "indoor_seating"]
+        },
+        {
+            id: 10,
+            name: "String Café",
+            city: "Stockholm",
+            address: "Nytorget 19, Södermalm",
+            description: "Modern coffee shop with specialty beans and minimalist Scandinavian design.",
+            rating: 4.4,
+            features: ["coffee", "wifi", "indoor_seating"]
+        }
+    ];
+    
+    const gothenburgPlaces = [
+        {
+            id: 11,
+            name: "Da Matteo",
+            city: "Gothenburg",
+            address: "Magasinsgatan 17A, Centrum",
+            description: "Italian-inspired coffee roastery with excellent kanelbullar and cozy atmosphere.",
+            rating: 4.8,
+            features: ["kanelbullar", "wifi", "indoor_seating"]
+        },
+        {
+            id: 12,
+            name: "Café Husaren", 
+            city: "Gothenburg",
+            address: "Haga Nygata 28, Haga",
+            description: "Famous for the largest cinnamon buns in Sweden, a true Gothenburg institution.",
+            rating: 4.4,
+            features: ["kanelbullar", "outdoor_seating"]
+        },
+        {
+            id: 13,
+            name: "Café Magasinet",
+            city: "Gothenburg",
+            address: "Tredje Långgatan 8, Majorna",
+            description: "Industrial-chic café in Majorna with locally roasted coffee and fresh pastries.",
+            rating: 4.5,
+            features: ["coffee", "industrial_design", "indoor_seating"]
+        },
+        {
+            id: 14,
+            name: "Rosenkaffe",
+            city: "Gothenburg",
+            address: "Rosenlundsgatan 6, Centrum",
+            description: "Specialty coffee roastery and café with award-winning baristas and prinsesstårta.",
+            rating: 4.7,
+            features: ["coffee", "prinsesstarta", "wifi"]
+        },
+        {
+            id: 15,
+            name: "Café Kringlan",
+            city: "Gothenburg",
+            address: "Första Långgatan 28, Majorna",
+            description: "Cozy neighborhood café known for their homemade kanelbullar and friendly atmosphere.",
+            rating: 4.3,
+            features: ["kanelbullar", "neighborhood", "outdoor_seating"]
+        },
+        {
+            id: 16,
+            name: "Blackbird Coffee",
+            city: "Gothenburg",
+            address: "Kungsgatan 7, Centrum",
+            description: "Australian-style coffee house with flat whites and Swedish pastries.",
+            rating: 4.6,
+            features: ["coffee", "australian_style", "indoor_seating"]
+        },
+        {
+            id: 17,
+            name: "Café Rondo",
+            city: "Gothenburg",
+            address: "Chalmersgatan 12, Vasastaden",
+            description: "Student favorite near Chalmers University with affordable fika and study-friendly atmosphere.",
+            rating: 4.2,
+            features: ["student_friendly", "wifi", "indoor_seating"]
+        },
+        {
+            id: 18,
+            name: "Konditori Caroli",
+            city: "Gothenburg",
+            address: "Östra Hamngatan 18, Centrum",
+            description: "Traditional Swedish konditori since 1952, famous for their handmade prinsesstårta.",
+            rating: 4.5,
+            features: ["prinsesstarta", "traditional", "historic"]
+        },
+        {
+            id: 19,
+            name: "Café Kanel",
+            city: "Gothenburg",
+            address: "Vasagatan 32, Vasastaden",
+            description: "Warm, inviting café specializing in cinnamon-based treats and organic coffee.",
+            rating: 4.4,
+            features: ["kanelbullar", "organic", "cozy"]
+        },
+        {
+            id: 20,
+            name: "The Coffee Factory",
+            city: "Gothenburg",
+            address: "Klippan 1B, Klippan",
+            description: "Industrial coffee roastery with tours, tastings, and exceptional Swedish pastries.",
+            rating: 4.7,
+            features: ["coffee", "tours", "industrial"]
+        }
+    ];
+    
+    const malmoPlaces = [
+        {
+            id: 21,
+            name: "Lilla Kafferosteriet",
+            city: "Malmö",
+            address: "Baltzarsgatan 24, Centrum",
+            description: "Small coffee roastery with excellent single-origin beans and homemade pastries.",
+            rating: 4.6,
+            features: ["wifi", "indoor_seating"]
+        },
+        {
+            id: 22,
+            name: "Café Sirap",
+            city: "Malmö",
+            address: "Stora Nygatan 35, Gamla Staden",
+            description: "Charming vintage café with traditional Swedish fika culture and outdoor seating.",
+            rating: 4.3,
+            features: ["prinsesstarta", "outdoor_seating"]
+        },
+        {
+            id: 23,
+            name: "Hollandia",
+            city: "Malmö",
+            address: "Södergatan 64, Centrum",
+            description: "Historic café and konditori since 1922, famous for their traditional prinsesstårta.",
+            rating: 4.7,
+            features: ["prinsesstarta", "historic", "traditional"]
+        },
+        {
+            id: 24,
+            name: "Café Pronto",
+            city: "Malmö",
+            address: "Davidshallsgatan 9, Davidshall",
+            description: "Italian-Swedish fusion café with excellent espresso and kanelbullar.",
+            rating: 4.4,
+            features: ["kanelbullar", "espresso", "fusion"]
+        },
+        {
+            id: 25,
+            name: "Mood Coffee Bar",
+            city: "Malmö",
+            address: "Rörsjögatan 14, Möllevången",
+            description: "Hip coffee bar in multicultural Möllevången with specialty roasts and vegan pastries.",
+            rating: 4.5,
+            features: ["coffee", "vegan", "multicultural"]
+        },
+        {
+            id: 26,
+            name: "Café Ariman",
+            city: "Malmö",
+            address: "Storgatan 17, Centrum",
+            description: "Persian-Swedish café blend with unique pastries and strong coffee traditions.",
+            rating: 4.3,
+            features: ["international", "strong_coffee", "unique_pastries"]
+        },
+        {
+            id: 27,
+            name: "Bullar & Bamba",
+            city: "Malmö",
+            address: "Amiralsgatan 23, Centrum",
+            description: "Modern bakery café specializing in creative takes on traditional kanelbullar.",
+            rating: 4.6,
+            features: ["kanelbullar", "modern", "creative"]
+        },
+        {
+            id: 28,
+            name: "St. Jakobs Stenugnsbageri",
+            city: "Malmö",
+            address: "S:t Paulsgatan 25, S:t Pauli",
+            description: "Stone-oven bakery with artisanal breads, traditional pastries, and outdoor courtyard.",
+            rating: 4.4,
+            features: ["artisanal", "outdoor_seating", "stone_oven"]
+        },
+        {
+            id: 29,
+            name: "Café Kopparkanna",
+            city: "Malmö",
+            address: "Kalendegatan 12, Gamla Staden",
+            description: "Cozy old town café with copper details, serving traditional Swedish fika in historic setting.",
+            rating: 4.5,
+            features: ["historic", "traditional", "cozy"]
+        },
+        {
+            id: 30,
+            name: "Nordic Roastery",
+            city: "Malmö",
+            address: "Industrigatan 8, Västra Hamnen",
+            description: "Minimalist Scandinavian roastery in modern Västra Hamnen with harbor views.",
+            rating: 4.7,
+            features: ["coffee", "harbor_views", "scandinavian_design"]
+        }
+    ];
+    
+    return [...stockholmPlaces, ...gothenburgPlaces, ...malmoPlaces];
+}
+
+function displayFilteredResults(places, title) {
+    // Hide main sections
+    const hero = document.querySelector('.hero');
+    const featured = document.querySelector('.featured');
+    const aboutFika = document.querySelector('.about-fika');
+    
+    if (hero) hero.style.display = 'none';
+    if (featured) featured.style.display = 'none';
+    if (aboutFika) aboutFika.style.display = 'none';
+    
+    const searchResults = document.getElementById('search-results');
+    const resultsTitle = document.getElementById('search-results-title');
+    const resultsContainer = document.getElementById('results-container');
+    
+    if (resultsTitle) resultsTitle.textContent = title;
+    if (searchResults) searchResults.style.display = 'block';
+    
+    if (places.length === 0) {
+        if (resultsContainer) {
+            resultsContainer.innerHTML = `
+                <div class="no-results">
+                    <p>No fika places found with these criteria. Try different filters!</p>
+                </div>
+            `;
+        }
+        return;
+    }
+    
+    if (resultsContainer) {
+        resultsContainer.innerHTML = places.map(place => createPlaceCard(place)).join('');
+    }
+}
+
+function createPlaceCard(place) {
+    const rating = place.rating || 0;
+    const stars = '★'.repeat(Math.floor(rating)) + '☆'.repeat(5 - Math.floor(rating));
+    
+    return `
+        <article class="place-card" data-place-id="${place.id}">
+            <div class="place-header">
+                <div>
+                    <h3 class="place-name">${escapeHtml(place.name)}</h3>
+                    <p class="place-location">${escapeHtml(place.address || place.city)}</p>
+                </div>
+                <div class="place-rating">
+                    <span class="stars">${stars}</span>
+                    <span class="rating-value">${rating.toFixed(1)}</span>
+                </div>
+            </div>
+            <p class="place-description">${escapeHtml(place.description || '')}</p>
+            ${place.features && place.features.length > 0 ? 
+                `<div class="place-features">
+                    ${place.features.slice(0, 3).map(feature => 
+                        `<span class="feature-tag">${escapeHtml(formatFeature(feature))}</span>`
+                    ).join('')}
+                </div>` 
+                : ''
+            }
+        </article>
+    `;
+}
+
+function formatFeature(feature) {
+    const featureMap = {
+        'wifi': 'WiFi',
+        'outdoor_seating': 'Uteservering',
+        'indoor_seating': 'Inomhus',
+        'wheelchair_accessible': 'Rullstolstillgänglig',
+        'kanelbullar': 'Kanelbullar',
+        'prinsesstarta': 'Prinsesstårta',
+        'coffee': 'Kaffe'
+    };
+    
+    return featureMap[feature] || feature.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+}
+
+function escapeHtml(unsafe) {
+    if (typeof unsafe !== 'string') return '';
+    return unsafe
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+function showAllSections() {
+    // Show main sections
+    const hero = document.querySelector('.hero');
+    const featured = document.querySelector('.featured');
+    const aboutFika = document.querySelector('.about-fika');
+    const searchResults = document.getElementById('search-results');
+    
+    if (hero) hero.style.display = 'flex';
+    if (featured) featured.style.display = 'block';
+    if (aboutFika) aboutFika.style.display = 'block';
+    if (searchResults) searchResults.style.display = 'none';
+}
+
+function initializeBrandLink(app) {
+    const brandLink = document.querySelector('.brand-link');
+    if (brandLink) {
+        brandLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Reset all filters to default state
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Set "All Cities" and "All Types" as active
+            const allCitiesBtn = document.querySelector('.city-filter[data-city="all"]');
+            const allTypesBtn = document.querySelector('.feature-filter[data-feature="all"]');
+            
+            if (allCitiesBtn) allCitiesBtn.classList.add('active');
+            if (allTypesBtn) allTypesBtn.classList.add('active');
+            
+            // Clear search input
+            const searchInput = document.getElementById('search-input');
+            if (searchInput) searchInput.value = '';
+            
+            // Show all sections and load featured places
+            showAllSections();
+            app.loadFeaturedPlaces();
+            
+            // Scroll to top smoothly
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+}
 
 // Handle navigation for city pages
 window.addEventListener('popstate', (event) => {

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>About Fika Culture - Traditional Swedish Fika</title>
+    <meta name="description" content="Learn about the Swedish cultural tradition of Fika - more than just a coffee break, it's a way of life that emphasizes connection, mindfulness, and enjoying life's simple pleasures.">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="Swedish fika culture, coffee break tradition, Swedish lifestyle, kanelbulle, Swedish social customs, mindfulness, work-life balance">
+    <meta name="author" content="Traditional Swedish Fika">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://swedishfika.com/about">
+    <meta property="og:title" content="About Fika Culture - Traditional Swedish Fika">
+    <meta property="og:description" content="Discover the cultural significance of Swedish Fika - a daily ritual that goes beyond coffee to embrace connection and mindfulness.">
+    <meta property="og:image" content="/static/images/fika-culture.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://swedishfika.com/about">
+    <meta property="twitter:title" content="About Fika Culture">
+    <meta property="twitter:description" content="Learn about the Swedish tradition of Fika and its cultural significance">
+    <meta property="twitter:image" content="/static/images/fika-culture.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/images/apple-touch-icon.png">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Custom Stylesheets -->
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "What is Fika? A Look into Swedish Culture",
+        "description": "Learn about the Swedish cultural tradition of Fika and its significance in Swedish daily life",
+        "author": {
+            "@type": "Organization",
+            "name": "Traditional Swedish Fika"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Traditional Swedish Fika"
+        },
+        "datePublished": "2024-01-01",
+        "dateModified": "2024-01-01",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://swedishfika.com/about"
+        },
+        "about": {
+            "@type": "Thing",
+            "name": "Swedish Fika Culture",
+            "description": "Traditional Swedish coffee break and social ritual"
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav-brand">
+                <h1><a href="/" class="brand-link">Traditional Swedish Fika</a></h1>
+                <span class="nav-tagline">Upptäck äkta fika-upplevelser</span>
+            </div>
+            
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input 
+                    type="text" 
+                    id="search-input" 
+                    class="search-input" 
+                    placeholder="Sök fika-ställen..."
+                    aria-label="Search for fika locations"
+                >
+                <button class="search-btn" id="search-btn" aria-label="Search">
+                    🔍
+                </button>
+            </div>
+        </nav>
+        
+        <!-- Filter Navigation -->
+        <nav class="filter-nav">
+            <div class="container">
+                <div class="filter-sections">
+                    <!-- City Dropdown -->
+                    <div class="filter-dropdown">
+                        <button class="dropdown-toggle" data-dropdown="cities">
+                            <span>All Cities</span>
+                            <span class="dropdown-arrow">▼</span>
+                        </button>
+                        <div class="dropdown-menu" id="cities-dropdown">
+                            <button class="dropdown-item city-filter active" data-city="all">All Cities</button>
+                            <button class="dropdown-item city-filter" data-city="stockholm">Stockholm</button>
+                            <button class="dropdown-item city-filter" data-city="gothenburg">Gothenburg</button>
+                            <button class="dropdown-item city-filter" data-city="malmo">Malmö</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Seating Dropdown -->
+                    <div class="filter-dropdown">
+                        <button class="dropdown-toggle" data-dropdown="seating">
+                            <span>Seating</span>
+                            <span class="dropdown-arrow">▼</span>
+                        </button>
+                        <div class="dropdown-menu" id="seating-dropdown">
+                            <button class="dropdown-item feature-filter" data-feature="indoor_seating">Indoor</button>
+                            <button class="dropdown-item feature-filter" data-feature="outdoor_seating">Outdoor</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Specialties Dropdown -->
+                    <div class="filter-dropdown">
+                        <button class="dropdown-toggle" data-dropdown="specialties">
+                            <span>Specialties</span>
+                            <span class="dropdown-arrow">▼</span>
+                        </button>
+                        <div class="dropdown-menu" id="specialties-dropdown">
+                            <button class="dropdown-item specialty-filter" data-specialty="kanelbullar">Kanelbullar</button>
+                            <button class="dropdown-item specialty-filter" data-specialty="prinsesstarta">Prinsesstårta</button>
+                            <button class="dropdown-item specialty-filter" data-specialty="coffee">Own Coffee Brand</button>
+                        </div>
+                    </div>
+                    
+                    <!-- About Button -->
+                    <div class="about-link">
+                        <button class="dropdown-toggle" id="about-fika-btn">About Swedish Fika</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <article class="about-article">
+                <header class="article-header">
+                    <h1 class="article-title">What is Fika? A Look into Swedish Culture</h1>
+                    <p class="article-subtitle">Understanding Sweden's beloved coffee break tradition</p>
+                </header>
+                
+                <div class="article-content">
+                    <section class="content-section">
+                        <p class="intro-text">
+                            Fika is one of the most iconic aspects of Swedish life. More than just a coffee break, it is a cultural institution that reflects the Swedish values of balance, connection, and slowing down to enjoy the moment. In Sweden, Fika is a daily ritual that can happen anywhere—from homes and offices to cafes and public spaces.
+                        </p>
+                    </section>
+                    
+                    <section class="content-section">
+                        <h2>The Heart of Fika: Coffee and Conversation</h2>
+                        <p>
+                            At its core, Fika involves coffee, tea, or other beverages paired with something sweet, like a cinnamon bun ("kanelbulle"), cardamom pastry, or cake. But Fika is about more than food and drink—it is a social practice. Swedes use Fika as an opportunity to pause, talk, and connect with friends, family, or colleagues. Even in workplaces, Fika is considered essential for team bonding and overall well-being.
+                        </p>
+                    </section>
+                    
+                    <section class="content-section">
+                        <h2>More than a Break</h2>
+                        <p>
+                            Unlike a rushed coffee stop, Fika is intentional. It's about slowing down, being present, and appreciating life's small pleasures. The Swedish approach emphasizes quality over quantity: the focus is on genuine conversation and a relaxed atmosphere rather than finishing a snack quickly.
+                        </p>
+                    </section>
+                    
+                    <section class="content-section">
+                        <h2>Fika in Everyday Life</h2>
+                        <p>
+                            In Sweden, Fika can happen multiple times a day. A morning Fika at work sets a positive tone, while an afternoon Fika offers a refreshing pause. On weekends, Fika is often enjoyed at home or in cafes, sometimes accompanied by friends or family for hours of socializing.
+                        </p>
+                    </section>
+                    
+                    <section class="content-section">
+                        <h2>Cultural Significance</h2>
+                        <p>
+                            Fika reflects Swedish social values: equality, openness, and mindfulness. Sharing a coffee and pastry is a way to break barriers and create a sense of community. Even internationally, Fika is recognized as a hallmark of Swedish culture and hospitality.
+                        </p>
+                    </section>
+                    
+                    <section class="content-section">
+                        <h2>Conclusion</h2>
+                        <p>
+                            Fika is more than coffee—it's a lifestyle. It embodies the Swedish approach to living well: taking time to slow down, connect with others, and savor simple pleasures. In Sweden, Fika isn't just a tradition—it's a way of life.
+                        </p>
+                    </section>
+                </div>
+                
+                <footer class="article-footer">
+                    <p><a href="/" class="back-link">← Back to Fika Locations</a></p>
+                </footer>
+            </article>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Traditional Swedish Fika</h3>
+                    <p>Discovering authentic fika experiences across Sweden</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Cities</h4>
+                    <ul>
+                        <li><a href="/stockholm">Stockholm</a></li>
+                        <li><a href="/gothenburg">Gothenburg</a></li>
+                        <li><a href="/malmo">Malmö</a></li>
+                        <li><a href="/uppsala">Uppsala</a></li>
+                        <li><a href="/vasteras">Västerås</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="/about">About Fika Culture</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                        <li><a href="/submit">Submit a Place</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Traditional Swedish Fika. Made with ❤️ for fika lovers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Scripts -->
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
