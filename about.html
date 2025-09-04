@@ -73,74 +73,49 @@
 <body>
     <!-- Header -->
     <header class="header">
-        <nav class="nav container">
-            <div class="nav-brand">
-                <h1><a href="/" class="brand-link">Traditional Swedish Fika</a></h1>
-                <span class="nav-tagline">Upptäck äkta fika-upplevelser</span>
-            </div>
-            
-            <!-- Search Bar -->
-            <div class="search-container">
-                <input 
-                    type="text" 
-                    id="search-input" 
-                    class="search-input" 
-                    placeholder="Sök fika-ställen..."
-                    aria-label="Search for fika locations"
-                >
-                <button class="search-btn" id="search-btn" aria-label="Search">
-                    🔍
-                </button>
-            </div>
-        </nav>
-        
-        <!-- Filter Navigation -->
-        <nav class="filter-nav">
+        <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container">
-                <div class="filter-sections">
-                    <!-- City Dropdown -->
-                    <div class="filter-dropdown">
-                        <button class="dropdown-toggle" data-dropdown="cities">
-                            <span>All Cities</span>
-                            <span class="dropdown-arrow">▼</span>
-                        </button>
-                        <div class="dropdown-menu" id="cities-dropdown">
-                            <button class="dropdown-item city-filter active" data-city="all">All Cities</button>
-                            <button class="dropdown-item city-filter" data-city="stockholm">Stockholm</button>
-                            <button class="dropdown-item city-filter" data-city="gothenburg">Gothenburg</button>
-                            <button class="dropdown-item city-filter" data-city="malmo">Malmö</button>
+                <!-- Brand -->
+                <div class="navbar-brand">
+                    <h1><a href="/" class="brand-link text-decoration-none">Traditional Swedish Fika</a></h1>
+                    <span class="nav-tagline">Upptäck äkta fika-upplevelser</span>
+                </div>
+                
+                <!-- Mobile hamburger toggle -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <!-- Collapsible content -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <!-- Search Bar -->
+                    <div class="d-flex ms-auto">
+                        <div class="input-group">
+                            <input 
+                                type="text" 
+                                id="search-input" 
+                                class="form-control" 
+                                placeholder="Sök fika-ställen..."
+                                aria-label="Search for fika locations"
+                            >
+                            <button class="btn btn-outline-secondary" id="search-btn" type="button" aria-label="Search">
+                                🔍
+                            </button>
                         </div>
                     </div>
                     
-                    <!-- Seating Dropdown -->
-                    <div class="filter-dropdown">
-                        <button class="dropdown-toggle" data-dropdown="seating">
-                            <span>Seating</span>
-                            <span class="dropdown-arrow">▼</span>
-                        </button>
-                        <div class="dropdown-menu" id="seating-dropdown">
-                            <button class="dropdown-item feature-filter" data-feature="indoor_seating">Indoor</button>
-                            <button class="dropdown-item feature-filter" data-feature="outdoor_seating">Outdoor</button>
-                        </div>
-                    </div>
-                    
-                    <!-- Specialties Dropdown -->
-                    <div class="filter-dropdown">
-                        <button class="dropdown-toggle" data-dropdown="specialties">
-                            <span>Specialties</span>
-                            <span class="dropdown-arrow">▼</span>
-                        </button>
-                        <div class="dropdown-menu" id="specialties-dropdown">
-                            <button class="dropdown-item specialty-filter" data-specialty="kanelbullar">Kanelbullar</button>
-                            <button class="dropdown-item specialty-filter" data-specialty="prinsesstarta">Prinsesstårta</button>
-                            <button class="dropdown-item specialty-filter" data-specialty="coffee">Own Coffee Brand</button>
-                        </div>
-                    </div>
-                    
-                    <!-- About Button -->
-                    <div class="about-link">
-                        <button class="dropdown-toggle" id="about-fika-btn">About Swedish Fika</button>
-                    </div>
+                    <!-- Navigation Links -->
+                    <ul class="navbar-nav ms-3">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/about.html">About Fika</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/contact.html">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/submit.html">Submit Location</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>

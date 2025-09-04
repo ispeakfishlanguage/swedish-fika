@@ -10,14 +10,14 @@
     <meta name="description" content="Get in touch with Traditional Swedish Fika. Contact us for questions, suggestions, or to submit a new fika location.">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="/static/images/apple-touch-icon.png">
+    <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/images/apple-touch-icon.png">
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     
     <!-- Custom Stylesheets -->
-    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="static/css/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -25,27 +25,49 @@
 <body>
     <!-- Header -->
     <header class="header">
-        <nav class="navbar navbar-expand-lg">
+        <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container">
+                <!-- Brand -->
                 <div class="navbar-brand">
                     <h1><a href="/" class="brand-link text-decoration-none">Traditional Swedish Fika</a></h1>
                     <span class="nav-tagline">Upptäck äkta fika-upplevelser</span>
                 </div>
                 
-                <!-- Search Bar -->
-                <div class="d-flex">
-                    <div class="input-group">
-                        <input 
-                            type="text" 
-                            id="search-input" 
-                            class="form-control" 
-                            placeholder="Sök fika-ställen..."
-                            aria-label="Search for fika locations"
-                        >
-                        <button class="btn btn-outline-secondary" id="search-btn" type="button" aria-label="Search">
-                            🔍
-                        </button>
+                <!-- Mobile hamburger toggle -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <!-- Collapsible content -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <!-- Search Bar -->
+                    <div class="d-flex ms-auto">
+                        <div class="input-group">
+                            <input 
+                                type="text" 
+                                id="search-input" 
+                                class="form-control" 
+                                placeholder="Sök fika-ställen..."
+                                aria-label="Search for fika locations"
+                            >
+                            <button class="btn btn-outline-secondary" id="search-btn" type="button" aria-label="Search">
+                                🔍
+                            </button>
+                        </div>
                     </div>
+                    
+                    <!-- Navigation Links -->
+                    <ul class="navbar-nav ms-3">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about.html">About Fika</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/contact.html">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/submit.html">Submit Location</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -69,10 +91,59 @@
                     
                     <section class="content-section">
                         <h2>Get In Touch</h2>
-                        <p>
-                            <strong>Email:</strong> hello@swedishfika.com<br>
-                            <strong>Response Time:</strong> We typically respond within 24-48 hours
+                        <p class="mb-4">
+                            Fill out the form below and we'll get back to you within 24-48 hours, or email us directly at <strong>hello@swedishfika.com</strong>
                         </p>
+                        
+                        <!-- Contact Form -->
+                        <div class="contact-form-container">
+                            <form class="contact-form" id="contact-form" action="#" method="POST">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="firstName" class="form-label">First Name <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="firstName" name="firstName" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="lastName" class="form-label">Last Name <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="lastName" name="lastName" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email Address <span class="text-danger">*</span></label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="subject" class="form-label">Subject <span class="text-danger">*</span></label>
+                                    <select class="form-select" id="subject" name="subject" required>
+                                        <option value="">Choose a topic...</option>
+                                        <option value="general">General Question</option>
+                                        <option value="location">Submit a Fika Location</option>
+                                        <option value="partnership">Partnership Inquiry</option>
+                                        <option value="website">Website Issue</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Message <span class="text-danger">*</span></label>
+                                    <textarea class="form-control" id="message" name="message" rows="5" placeholder="Tell us about your question, suggestion, or the fika location you'd like to recommend..." required></textarea>
+                                </div>
+                                
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="newsletter" name="newsletter">
+                                    <label class="form-check-label" for="newsletter">
+                                        I'd like to receive occasional updates about new fika locations and Swedish culture
+                                    </label>
+                                </div>
+                                
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                                    <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+                                    <button type="reset" class="btn btn-outline-secondary btn-lg">Clear Form</button>
+                                </div>
+                            </form>
+                        </div>
                     </section>
                     
                     <section class="content-section">
@@ -143,6 +214,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     
     <!-- Scripts -->
-    <script src="/static/js/main.js"></script>
+    <script src="static/js/main.js"></script>
 </body>
 </html>

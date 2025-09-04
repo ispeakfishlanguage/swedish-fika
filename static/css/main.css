@@ -121,6 +121,108 @@ body {
 .form-control:focus {
     background-color: var(--background-light);
     border-color: var(--earthy-brown);
+    color: var(--sand-text);
+    box-shadow: 0 0 0 0.2rem rgba(141, 110, 99, 0.25);
+}
+
+.form-select {
+    background-color: var(--background-light);
+    border-color: var(--border-light);
+    color: var(--sand-text);
+}
+
+.form-select:focus {
+    background-color: var(--background-light);
+    border-color: var(--earthy-brown);
+    color: var(--sand-text);
+    box-shadow: 0 0 0 0.2rem rgba(141, 110, 99, 0.25);
+}
+
+.form-label {
+    color: var(--soft-beige);
+    font-weight: 500;
+}
+
+/* Contact Form Styling */
+.contact-form-container {
+    background-color: var(--dark-brown-bg);
+    padding: var(--space-2xl);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-light);
+    margin: var(--space-lg) 0;
+}
+
+.contact-form .form-check-input:checked {
+    background-color: var(--earthy-brown);
+    border-color: var(--earthy-brown);
+}
+
+.contact-form .form-check-label {
+    color: var(--sand-text);
+}
+
+/* Navbar Styling */
+.navbar-toggler {
+    border-color: var(--border-light);
+    padding: 0.25rem 0.5rem;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem rgba(141, 110, 99, 0.25);
+    border-color: var(--earthy-brown);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23F5E6D3' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar-nav .nav-link {
+    color: var(--soft-beige) !important;
+    font-weight: 500;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--earthy-brown) !important;
+}
+
+.navbar-nav .nav-link.active {
+    color: var(--earthy-brown) !important;
+    font-weight: 600;
+}
+
+/* Mobile navbar collapse styling */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background-color: var(--dark-brown-bg);
+        border-radius: var(--radius-md);
+        padding: var(--space-md);
+        margin-top: var(--space-md);
+        border: 1px solid var(--border-light);
+    }
+    
+    .navbar-nav {
+        margin-top: var(--space-md);
+    }
+    
+    .navbar-nav .nav-link {
+        padding: var(--space-sm) var(--space-md);
+        border-radius: var(--radius-sm);
+        transition: background-color 0.2s;
+    }
+    
+    .navbar-nav .nav-link:hover {
+        background-color: var(--background-light);
+    }
+    
+    .input-group {
+        width: 100%;
+        margin-bottom: var(--space-md);
+    }
+}
+
+.form-control:focus {
+    background-color: var(--background-light);
+    border-color: var(--earthy-brown);
     box-shadow: 0 0 0 0.25rem rgba(141, 110, 99, 0.25);
     color: var(--soft-beige);
 }
@@ -466,7 +568,7 @@ a:hover {
 .hero {
     position: relative;
     padding: var(--space-2xl) 0;
-    min-height: 60vh;
+    min-height: 85vh;
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -511,23 +613,23 @@ a:hover {
 }
 
 .hero-title {
-    font-size: 3rem;
+    font-size: 4rem;
     font-weight: 700;
     color: #ffffff;
-    margin-bottom: var(--space-md);
+    margin-bottom: var(--space-lg);
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
 }
 
 .hero-subtitle {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     color: #ffffff;
     font-weight: 500;
-    max-width: 600px;
+    max-width: 700px;
     margin-left: auto;
     margin-right: auto;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
     background: none;
-    padding: var(--space-md);
+    padding: var(--space-lg);
 }
 
 /* City Section */

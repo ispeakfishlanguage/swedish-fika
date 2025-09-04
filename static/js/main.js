@@ -1037,5 +1037,97 @@ window.addEventListener('popstate', (event) => {
     }
 });
 
+// Contact Form Handling
+function initializeContactForm() {
+    const contactForm = document.getElementById('contact-form');
+    if (!contactForm) return;
+    
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = new FormData(contactForm);
+        const data = {
+            firstName: formData.get('firstName'),
+            lastName: formData.get('lastName'),
+            email: formData.get('email'),
+            subject: formData.get('subject'),
+            message: formData.get('message'),
+            newsletter: formData.get('newsletter') === 'on'
+        };
+        
+        // Show loading state
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+        
+        // Simulate form submission (replace with actual endpoint)
+        setTimeout(() => {
+            // Show success message
+            showContactFormMessage('Thank you for your message! We\'ll get back to you within 24-48 hours.', 'success');
+            
+            // Reset form
+            contactForm.reset();
+            
+            // Reset button
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        }, 1500);
+        
+        // In a real implementation, you would send the data to your server:
+        // fetch('/api/contact', {
+        //     method: 'POST',
+        //     headers: { 'Content-Type': 'application/json' },
+        //     body: JSON.stringify(data)
+        // })
+        // .then(response => response.json())
+        // .then(data => {
+        //     if (data.success) {
+        //         showContactFormMessage('Thank you for your message!', 'success');
+        //         contactForm.reset();
+        //     } else {
+        //         showContactFormMessage('Sorry, there was an error sending your message. Please try again.', 'error');
+        //     }
+        // })
+        // .catch(error => {
+        //     showContactFormMessage('Sorry, there was an error sending your message. Please try again.', 'error');
+        // })
+        // .finally(() => {
+        //     submitBtn.textContent = originalText;
+        //     submitBtn.disabled = false;
+        // });
+    });
+}
+
+function showContactFormMessage(message, type) {
+    // Remove existing message
+    const existingMessage = document.querySelector('.contact-form-message');
+    if (existingMessage) {
+        existingMessage.remove();
+    }
+    
+    // Create message element
+    const messageElement = document.createElement('div');
+    messageElement.className = `alert ${type === 'success' ? 'alert-success' : 'alert-danger'} contact-form-message mt-3`;
+    messageElement.textContent = message;
+    
+    // Insert after form
+    const contactForm = document.getElementById('contact-form');
+    contactForm.insertAdjacentElement('afterend', messageElement);
+    
+    // Auto-remove after 5 seconds
+    setTimeout(() => {
+        if (messageElement.parentNode) {
+            messageElement.remove();
+        }
+    }, 5000);
+}
+
+// Initialize contact form when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    initializeContactForm();
+});
+
 // Export for global access
 window.FikaApp = FikaApp;
